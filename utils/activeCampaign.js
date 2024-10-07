@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const { ACTIVE_CAMPAIGN_URL, API_KEY } = process.env;
+const { ACTIVE_CAMPAIGN_URL, API_KEY, ACTIVE_CAMPAIGN_LIST_ID } = process.env;
 
 class ActiveCampaignApi {
   constructor() {
@@ -48,7 +48,7 @@ class ActiveCampaignApi {
       this.specificURL = "contactLists";
       this._options.body = JSON.stringify({
         contactList: {
-          list: process.env.ACTIVE_CAMPAIGN_LIST_ID,
+          list: ACTIVE_CAMPAIGN_LIST_ID,
           contact: contactId,
           status: 1,
         },
