@@ -3,8 +3,9 @@ require('dotenv').config();
 const getData = function (req, res, next) {
   const dates = {
     webinarDate: process.env.WEBINAR_DATE,
-    programaDate: process.env.PROGRAMA_DATE,
-    moduleDates: process.env.MODULES_DATES,
+    diaSemanaDate: process.env.DIA_SEMANA_DATE,
+    modulesDate: process.env.MODULES_DATE,
+    programaHoraDate: process.env.PROGRAMA_HORA_DATE,
 
     moduleDate_1: process.env.MODULE_DATE_1,
     moduleDate_2: process.env.MODULE_DATE_2,
@@ -17,10 +18,10 @@ const getData = function (req, res, next) {
     fbGroupUrl: process.env.FB_GROUP_URL,
     whatsappUrl: process.env.WHATSAPP_URL,
     encuestaWebinarUrl: process.env.ENCUESTA_WEBINAR_URL,
-    encuestaCompraUrl: process.env.ENCUESTA_COMPRA_URL,
+    encuestaVentaUrl: process.env.ENCUESTA_COMPRA_URL,
 
-    graciasRegistroURL: process.env.GRACIAS_REGISTRO_URL,
-    graciasCompraURL: process.env.GRACIAS_COMPRA_URL,
+    graciasRegistroUrl: process.env.GRACIAS_REGISTRO_URL,
+    graciasVentaUrl: process.env.GRACIAS_COMPRA_URL,
 
     communityUrl: process.env.COMMUNITY_URL,
     buyoutUrl: process.env.BUYOUT_URL,
