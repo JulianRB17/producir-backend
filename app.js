@@ -43,8 +43,8 @@ app.get('/crash-test', () => {
 });
 
 app.use(limiter);
-app.use('/users', usersRoute);
-app.use('/data', dataRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/data', dataRoute);
 
 app.use(errorLogger);
 // app.use(errors());
