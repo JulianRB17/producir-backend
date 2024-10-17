@@ -29,7 +29,12 @@ const getData = function (req, res, next) {
     igUrl: process.env.IG_URL,
     tiktokUrl: process.env.TIKTOK_URL,
   };
-  res.json({ dates, urls });
+
+  const fbData = {
+    pixelId: process.env.PIXEL_ID,
+  };
+
+  res.json({ dates, urls, fbData });
 };
 
 module.exports = {
