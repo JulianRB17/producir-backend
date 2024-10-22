@@ -1,14 +1,18 @@
-const fetch = require("node-fetch");
-const { ACTIVE_CAMPAIGN_URL, API_KEY, ACTIVE_CAMPAIGN_LIST_ID } = process.env;
+const fetch = require('node-fetch');
+const {
+  ACTIVE_CAMPAIGN_URL,
+  ACTIVE_CAMPAIGN_API_KEY,
+  ACTIVE_CAMPAIGN_LIST_ID,
+} = process.env;
 
 class ActiveCampaignApi {
   constructor() {
     this._baseUrl = ACTIVE_CAMPAIGN_URL;
     this._options = {
       headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        "Api-Token": API_KEY,
+        accept: 'application/json',
+        'content-type': 'application/json',
+        'Api-Token': ACTIVE_CAMPAIGN_API_KEY,
       },
     };
   }
@@ -28,8 +32,8 @@ class ActiveCampaignApi {
   async createContact(data, next) {
     try {
       const { email, firstName } = data;
-      this._options.method = "POST";
-      this.specificURL = "contacts";
+      this._options.method = 'POST';
+      this.specificURL = 'contacts';
       this._options.body = JSON.stringify({
         contact: {
           email: email,
@@ -44,8 +48,8 @@ class ActiveCampaignApi {
 
   async postContactToAList(contactId, next) {
     try {
-      this._options.method = "POST";
-      this.specificURL = "contactLists";
+      this._options.method = 'POST';
+      this.specificURL = 'contactLists';
       this._options.body = JSON.stringify({
         contactList: {
           list: ACTIVE_CAMPAIGN_LIST_ID,
@@ -61,8 +65,8 @@ class ActiveCampaignApi {
 
   async postContactToMasterList(contactId, next) {
     try {
-      this._options.method = "POST";
-      this.specificURL = "contactLists";
+      this._options.method = 'POST';
+      this.specificURL = 'contactLists';
       this._options.body = JSON.stringify({
         contactList: {
           list: 1,
@@ -78,8 +82,8 @@ class ActiveCampaignApi {
 
   async getLists() {
     try {
-      this._options.method = "GET";
-      this.specificURL = "lists";
+      this._options.method = 'GET';
+      this.specificURL = 'lists';
       this._options.body = null;
       return await this._fetchData();
     } catch (err) {

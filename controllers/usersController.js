@@ -21,7 +21,6 @@ const createUser = catchAsync(async function (req, res, next) {
       user[0].id,
       next
     );
-    res.json(updatedList);
     res.json(user);
   }
   if (!user[0]) {
@@ -41,7 +40,6 @@ const createUser = catchAsync(async function (req, res, next) {
       next
     );
     const updatedList = await activeCampaignApi.postContactToAList(id, next);
-    res.json(updatedList);
     res.json(newUser);
   }
 });
