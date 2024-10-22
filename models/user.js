@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
-require("dotenv").config();
+const mongoose = require('mongoose');
+const validator = require('validator');
+require('dotenv').config();
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema({
     },
     required: true,
   },
-  webinarDate: {
+  webinarList: {
     type: Date,
     // required: true,
-    default: new Date(process.env.WEBINAR_DATE),
+    default: process.env.ACTIVE_CAMPAIGN_LIST_ID,
   },
   cdate: {
     type: Date,
@@ -45,4 +45,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

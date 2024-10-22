@@ -17,31 +17,31 @@ const createUser = catchAsync(async function (req, res, next) {
 
   const user = await User.find({ email: email });
   if (user[0]) {
-    // const updatedList = await activeCampaignApi.postContactToAList(
-    //   user[0].id,
-    //   next
-    // );
-    // res.json(updatedList);
+    const updatedList = await activeCampaignApi.postContactToAList(
+      user[0].id,
+      next
+    );
+    res.json(updatedList);
     res.json(user);
   }
   if (!user[0]) {
-    // const contact = await activeCampaignApi.createContact(req.body, next);
-    // const { cdate, udate, links, hash, id } = contact.contact;
+    const contact = await activeCampaignApi.createContact(req.body, next);
+    const { cdate, udate, links, hash, id } = contact.contact;
     const newUser = await User.create({
       email,
       firstName,
-      // cdate,
-      // udate,
-      // links,
-      // hash,
-      // id,
+      cdate,
+      udate,
+      links,
+      hash,
+      id,
     });
-    // const masterList = await activeCampaignApi.postContactToMasterList(
-    //   id,
-    //   next
-    // );
-    // const updatedList = await activeCampaignApi.postContactToAList(id, next);
-    // res.json(updatedList);
+    const masterList = await activeCampaignApi.postContactToMasterList(
+      id,
+      next
+    );
+    const updatedList = await activeCampaignApi.postContactToAList(id, next);
+    res.json(updatedList);
     res.json(newUser);
   }
 });
