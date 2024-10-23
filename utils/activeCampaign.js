@@ -38,6 +38,7 @@ class ActiveCampaignApi {
         contact: {
           email: email,
           firstName: firstName,
+          tags: [1, 2],
         },
       });
       return await this._fetchData();
