@@ -63,14 +63,14 @@ class ActiveCampaignApi {
     }
   }
 
-  async postTagToAContact(contactId, next) {
+  async postTagToAContact(contactId, tagId, next) {
     try {
       this._options.method = 'POST';
       this.specificURL = 'contactTags';
       this._options.body = JSON.stringify({
         contactTag: {
           contact: contactId,
-          tag: [1, 2],
+          tag: tagId,
         },
       });
       return await this._fetchData();
