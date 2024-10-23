@@ -38,7 +38,6 @@ class ActiveCampaignApi {
         contact: {
           email: email,
           firstName: firstName,
-          tags: [1, 2],
         },
       });
       return await this._fetchData();
@@ -56,6 +55,22 @@ class ActiveCampaignApi {
           list: ACTIVE_CAMPAIGN_LIST_ID,
           contact: contactId,
           status: 1,
+        },
+      });
+      return await this._fetchData();
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async postTagToAContact(contactId, next) {
+    try {
+      this._options.method = 'POST';
+      this.specificURL = 'contactTags';
+      this._options.body = JSON.stringify({
+        contactTag: {
+          contact: contactId,
+          tag: [1, 2],
         },
       });
       return await this._fetchData();

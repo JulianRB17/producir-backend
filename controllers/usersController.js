@@ -40,6 +40,8 @@ const createUser = catchAsync(async function (req, res, next) {
       next
     );
     const updatedList = await activeCampaignApi.postContactToAList(id, next);
+    const updatedTags = await activeCampaignApi.postTagToAContact(id, next);
+
     res.json(newUser);
   }
 });
