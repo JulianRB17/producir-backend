@@ -50,7 +50,11 @@ const createUser = catchAsync(async function (req, res, next) {
       2,
       next
     );
-
+    const updatedTagsRegisteredDate = await activeCampaignApi.postTagToAContact(
+      id,
+      process.env.ACTIVE_CAMPAIGN_TAG_ID,
+      next
+    );
     res.json(newUser);
   }
 });
