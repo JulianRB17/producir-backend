@@ -33,8 +33,8 @@ app.use(requestLogger);
 app.use(mongoSanitize());
 
 const corsOptions = {
-  // origin: 'https://elartedeproducir.com',
-  // optionsSuccessStatus: 200,
+  origin: 'https://elartedeproducir.com',
+  optionsSuccessStatus: 200,
 };
 app.use(cors({ corsOptions }));
 app.use(xss());
