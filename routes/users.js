@@ -3,8 +3,8 @@ const { celebrateCreateUserMiddleware } = require('../middlewares/celebrate');
 
 const {
   createUser,
-  // getUsers,
-  // deleteUsers,
+  getUsers,
+  deleteUsers,
 } = require('../controllers/usersController');
 
 usersRoute.get('/', getUsers);
