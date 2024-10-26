@@ -32,7 +32,10 @@ app.use(requestLogger);
 
 app.use(mongoSanitize());
 
-const corsOptions = { origin: 'localhost', optionsSuccessStatus: 200 };
+const corsOptions = {
+  origin: 'https://elartedeproducir.com',
+  optionsSuccessStatus: 200,
+};
 app.use(cors({ corsOptions }));
 app.use(xss());
 
