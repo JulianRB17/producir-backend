@@ -36,7 +36,7 @@ const corsOptions = {
   origin: 'https://elartedeproducir.com',
   optionsSuccessStatus: 200,
 };
-app.use(cors({ corsOptions }));
+app.use(cors(corsOptions));
 app.use(xss());
 
 app.get('/crash-test', () => {
