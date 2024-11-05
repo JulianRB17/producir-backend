@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   webinarTag: {
-    type: Date,
+    type: Number,
     // required: true,
     default: process.env.ACTIVE_CAMPAIGN_TAG_ID,
   },
