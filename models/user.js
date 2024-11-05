@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema({
     },
     required: true,
   },
-  webinarList: {
+  webinarTag: {
     type: Date,
     // required: true,
-    default: process.env.ACTIVE_CAMPAIGN_LIST_ID,
+    default: process.env.ACTIVE_CAMPAIGN_TAG_ID,
   },
   cdate: {
     type: Date,
