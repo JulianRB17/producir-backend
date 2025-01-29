@@ -7,7 +7,7 @@ const {
   deleteUsers,
 } = require('../controllers/usersController');
 
-//usersRoute.get('/', getUsers);
+usersRoute.get('/', getUsers);
 //usersRoute.delete('/:number', deleteUsers);
 usersRoute.post('/', createUser);
 //usersRoute.post('/', celebrateCreateUserMiddleware(), createUser);
