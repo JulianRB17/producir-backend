@@ -1,6 +1,6 @@
 const AppError = require('../utils/appError');
 const User = require('../models/user');
-const activeCampaignApi = require('../utils/activeCampaign');
+//const activeCampaignApi = require('../utils/activeCampaign');
 
 const catchAsync = require('./../utils/catchAsync');
 
@@ -13,10 +13,22 @@ const getUsers = catchAsync(async function (req, res, next) {
 });
 
 const createUser = catchAsync(async function (req, res, next) {
-  const { firstName, email } = req.body;
+  const { firstName, number } = req.body;
 
-  const user = await User.find({ email: email });
+  const user = await User.find({ number: number });
   if (user[0]) {
+    user[0].webinarDate = process.env.WEBINAR_DATE;
+    res.json(user);
+  }
+  if (!user[0]) {
+    const newUser = await User.create({
+      number,
+      firstName,
+      webinarDate: process.env.WEBINAR_DATE,
+    });
+    res.json(newUser);
+  }
+  /* if (user[0]) {
     const updatedList = await activeCampaignApi.postContactToAList(
       user[0].id,
       next
@@ -27,7 +39,7 @@ const createUser = catchAsync(async function (req, res, next) {
     const contact = await activeCampaignApi.createContact(req.body, next);
     const { cdate, udate, links, hash, id } = contact.contact;
     const newUser = await User.create({
-      email,
+      number,
       firstName,
       cdate,
       udate,
@@ -56,11 +68,11 @@ const createUser = catchAsync(async function (req, res, next) {
       next
     );
     res.json(newUser);
-  }
+  } */
 });
 
 const deleteUsers = catchAsync(async function (req, res, next) {
-  const deletedUsers = await User.deleteOne({ email: req.params.email });
+  const deletedUsers = await User.deleteOne({ number: req.params.number });
   res.json({ deletedUsers });
 });
 

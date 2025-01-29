@@ -8,20 +8,26 @@ const userSchema = new mongoose.Schema({
     maxlength: 30,
     required: true,
   },
+  number: {
+    type: Number,
+    min: 1000000000,
+    max: 9999999999,
+    required: true,
+  },
   email: {
     type: String,
-    required: true,
+    //required: true,
     unique: true,
     validate: {
       validator: validator.isEmail,
       message: (value) => `${value} no es un email válido`,
     },
-    required: true,
+    //required: true,
   },
   webinarTag: {
     type: Number,
     // required: true,
-    default: process.env.ACTIVE_CAMPAIGN_TAG_ID,
+    //default: process.env.ACTIVE_CAMPAIGN_TAG_ID,
   },
   cdate: {
     type: Date,
@@ -42,6 +48,10 @@ const userSchema = new mongoose.Schema({
   id: {
     type: String,
     // required: true,
+  },
+  webinarDate: {
+    type: Array,
+    default: [process.env.WEBINAR_DATE],
   },
 });
 

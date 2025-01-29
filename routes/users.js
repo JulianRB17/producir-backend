@@ -1,14 +1,15 @@
 const usersRoute = require('express').Router();
-const { celebrateCreateUserMiddleware } = require('../middlewares/celebrate');
+//const { celebrateCreateUserMiddleware } = require('../middlewares/celebrate');
 
 const {
   createUser,
-  // getUsers,
-  //deleteUsers,
+  getUsers,
+  deleteUsers,
 } = require('../controllers/usersController');
 
 //usersRoute.get('/', getUsers);
-//usersRoute.delete('/:email', deleteUsers);
-usersRoute.post('/', celebrateCreateUserMiddleware(), createUser);
+//usersRoute.delete('/:number', deleteUsers);
+usersRoute.post('/', createUser);
+//usersRoute.post('/', celebrateCreateUserMiddleware(), createUser);
 
 module.exports = { usersRoute };
